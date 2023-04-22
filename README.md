@@ -1,59 +1,43 @@
-# PDF Analysis with GPT
+# PDF Analyzer with GPT
 
-This project provides a command-line tool that leverages GPT to analyze and summarize PDF documents. Users can generate summaries, perform sentiment analysis, and ask questions about the content of the document. The tool is built using Python, pdfplumber, and OpenAI's GPT API.
+PDF Analyzer is a Python program that utilizes the GPT API to analyze and process PDF files. It allows users to summarize the content, perform sentiment analysis, or ask a question about the content of a PDF file.
 
 ## Features
 
-- Analyze and summarize text from PDF documents
-- Perform sentiment analysis on PDF content
-- Ask questions about the content of the document
-- Process multiple PDFs in a single session
+- Summarize PDF content: Generate a summary of the selected PDF file.
+- Sentiment analysis: Analyze the sentiment of the content in the PDF file.
+- Ask a question: Ask a question related to the content of the PDF file, and get an answer based on the GPT analysis.
+
+## Requirements
+
+- Python 3.x
+- pdfplumber
+- openai
+- tkinter
 
 ## Installation
 
-1. Clone the repository:
-```
-git clone https://github.com/dannywoot/PDFGPT/
-```
+1. Clone this repository or download the source code.
+2. Install the required packages:
 
-2. Change to the project directory:
 ```
-cd pdfapi
+pip install pdfplumber openai tkinter
 ```
-
-
-3. Install required Python packages:
+Set your OpenAI API key in the pdf.py script:
+python
 ```
-pip install -r requirements.txt
+openai.api_key = "your-api-key-here"
 ```
-
-4. Replace `your-api-key-here` in the `pdf.py` file with your OpenAI API key. You can get an API key by signing up for an account at https://onboard.openai.com.
-
-## Usage
-
-1. Run the `pdf.py` script:
+Usage
+Run the pdf.py script:
 ```
 python pdf.py
 ```
+Follow the on-screen instructions to select a PDF file and choose an analysis option.
+License
+This project is released under the MIT License. See the LICENSE file for more information.
 
-2. Follow the prompts to analyze a PDF document. You can:
-- Type 'summarise' to generate a summary
-- Type 'sentiment' for sentiment analysis
-- Ask a question about the content of the document
+Contributing
+If you'd like to contribute to this project, please feel free to fork the repository and submit a pull request.
 
-3. Type 'quit' to exit the application.
-
-## Dependencies
-
-- Python 3.6+
-- pdfplumber
-- openai
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue for any improvements, bug fixes, or feature requests.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
+You can create a new file named `README.md` in your repository and add this content to it.
