@@ -34,5 +34,5 @@ python pdf.py
 ```
 Follow the on-screen instructions to select a PDF file and choose an analysis option.
 
-Contributing
+
 If you'd like to contribute to this project, please feel free to fork the repository and submit a pull request.
