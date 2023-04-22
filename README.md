@@ -1,7 +1,7 @@
 # PDFGPT
 PDF Analysis with GPT
 
-Description: This Python program uses OpenAI's GPT model to analyze and summarize the content of PDF files. The user can visually select a PDF file, and the program will extract its text, divide it into smaller sections, and send multiple prompts to the GPT API to analyze each section. The program combines the responses for all sections to provide a comprehensive analysis of the selected PDF file.
+This Python program uses OpenAI's GPT model to analyze and summarize the content of PDF files. The user can visually select a PDF file, and the program will extract its text, divide it into smaller sections, and send multiple prompts to the GPT API to analyze each section. The program combines the responses for all sections to provide a comprehensive analysis of the selected PDF file.
 
 How to use:
 
