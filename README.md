@@ -24,7 +24,6 @@ PDF Analyzer is a Python program that utilizes the GPT API to analyze and proces
 pip install pdfplumber openai tkinter
 ```
 Set your OpenAI API key in the pdf.py script:
-python
 ```
 openai.api_key = "your-api-key-here"
 ```
