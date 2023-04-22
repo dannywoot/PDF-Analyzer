@@ -8,13 +8,17 @@ How to use:
 Install the required libraries:
 
 Copy code
-"pip install pdfplumber openai"
+```
+pip install pdfplumber openai
+```
 Replace 'your_openai_api_key' in the script with your actual OpenAI API key.
 
 Run the script:
 
 Copy code
-"python pdf_analysis_gpt.py"
+```
+python pdf_analysis_gpt.py
+```
 Follow the prompts in the terminal to interact with the program. Type your question, and the program will let you visually select a PDF file for analysis. Once the analysis is complete, the program will display the response from the GPT model. Type 'quit' to exit the program.
 
 Key Features:
