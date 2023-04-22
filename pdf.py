@@ -5,7 +5,7 @@ import tkinter as tk
 from tkinter import filedialog
 
 # Set your OpenAI API key
-openai.api_key = "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"
+openai.api_key = "YOUR_API"
 
 # Function to extract text from a PDF file
 import concurrent.futures
