@@ -34,20 +34,5 @@ python pdf.py
 ```
 Follow the on-screen instructions to select a PDF file and choose an analysis option.
 
-You can change engine, temperature and token limit by going here in pdf.py:
-```
-def send_message_to_gpt_api(prompt):
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=prompt,
-        max_tokens=1500,
-        n=1,
-        stop=None,
-        temperature=0.5,
-    )
-    message = response.choices[0].text.strip()
-    return message
-```
-
 
 If you'd like to contribute to this project, please feel free to fork the repository and submit a pull request.
