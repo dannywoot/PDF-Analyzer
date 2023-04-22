@@ -1,35 +1,59 @@
-# PDFGPT
-PDF Analysis with GPT
+# PDF Analysis with GPT-4
 
-This Python program uses OpenAI's GPT model to analyze and summarize the content of PDF files. The user can visually select a PDF file, and the program will extract its text, divide it into smaller sections, and send multiple prompts to the GPT API to analyze each section. The program combines the responses for all sections to provide a comprehensive analysis of the selected PDF file.
+This project provides a command-line tool that leverages GPT-4 to analyze and summarize PDF documents. Users can generate summaries, perform sentiment analysis, and ask questions about the content of the document. The tool is built using Python, pdfplumber, and OpenAI's GPT-4 API.
 
-How to use:
+## Features
 
-Install the required libraries:
+- Analyze and summarize text from PDF documents
+- Perform sentiment analysis on PDF content
+- Ask questions about the content of the document
+- Process multiple PDFs in a single session
 
-Copy code
+## Installation
+
+1. Clone the repository:
 ```
-pip install pdfplumber openai
+git clone https://github.com/dannywoot/PDFGPT/
 ```
-Replace 'your_openai_api_key' in the script with your actual OpenAI API key.
 
-Run the script:
+2. Change to the project directory:
+```
+cd pdfapi
+```
 
-Copy code
+
+3. Install required Python packages:
+```
+pip install -r requirements.txt
+```
+
+4. Replace `your-api-key-here` in the `pdf.py` file with your OpenAI API key. You can get an API key by signing up for an account at https://onboard.openai.com.
+
+## Usage
+
+1. Run the `pdf.py` script:
 ```
 python pdf.py
 ```
-Follow the prompts in the terminal to interact with the program. Type your question, and the program will let you visually select a PDF file for analysis. Once the analysis is complete, the program will display the response from the GPT model. Type 'quit' to exit the program.
 
-Key Features:
+2. Follow the prompts to analyze a PDF document. You can:
+- Type 'summarise' to generate a summary
+- Type 'sentiment' for sentiment analysis
+- Ask a question about the content of the document
 
-Extracts text from PDF files using the pdfplumber library.
-Divides the extracted text into smaller sections to overcome GPT's token limit.
-Processes PDF pages concurrently to speed up text extraction.
-Uses the tkinter library to create file dialogs for selecting folders and PDF files.
-Dependencies:
+3. Type 'quit' to exit the application.
 
-pdfplumber
-openai
-tkinter
-Note: This program is designed for educational purposes only. The performance and quality of the analysis may vary depending on the input and the specific GPT model used. Make sure to comply with OpenAI's usage policies when using the GPT API.
+## Dependencies
+
+- Python 3.6+
+- pdfplumber
+- openai
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a pull request or open an issue for any improvements, bug fixes, or feature requests.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
