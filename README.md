@@ -1,6 +1,6 @@
 # PDF Analysis with GPT
 
-This project provides a command-line tool that leverages GPT-4 to analyze and summarize PDF documents. Users can generate summaries, perform sentiment analysis, and ask questions about the content of the document. The tool is built using Python, pdfplumber, and OpenAI's GPT API.
+This project provides a command-line tool that leverages GPT to analyze and summarize PDF documents. Users can generate summaries, perform sentiment analysis, and ask questions about the content of the document. The tool is built using Python, pdfplumber, and OpenAI's GPT API.
 
 ## Features
 
