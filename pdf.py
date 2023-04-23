@@ -7,7 +7,7 @@ from tkinter import filedialog, ttk, scrolledtext
 import concurrent.futures
 
 # Set your OpenAI API key
-openai.api_key = "YOUR_API"
+openai.api_key = "your-api-key-here"
 
 def extract_text_from_page(page):
     return page.extract_text()
