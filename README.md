@@ -1,6 +1,6 @@
 # PDF Analyzer with GPT
 
-PDF Analyzer is a Python program that utilizes the GPT API to analyze and process PDF files. It allows users to summarize the content, perform sentiment analysis, or ask a question about the content of a PDF file.
+This project is a PDF analyzer tool powered by GPT-3 that allows you to ask questions, generate summaries, or perform sentiment analysis on the contents of PDF files. The tool features a simple visual interface for selecting PDF files and supports multi-page PDF documents.
 
 ## Features
 
