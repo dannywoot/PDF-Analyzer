@@ -1,9 +1,10 @@
 import pdfplumber
 import openai
 import os
+import fitz
 import tkinter as tk
+from tkinter import filedialog, ttk, scrolledtext
 import concurrent.futures
-from tkinter import filedialog
 
 # Set your OpenAI API key
 openai.api_key = "YOUR_API"
@@ -11,15 +12,18 @@ openai.api_key = "YOUR_API"
 def extract_text_from_page(page):
     return page.extract_text()
 
+import fitz
+
 def extract_text_from_pdf(pdf_path):
     try:
-        with pdfplumber.open(pdf_path) as pdf:
-            with concurrent.futures.ThreadPoolExecutor() as executor:
-                page_texts = list(executor.map(extract_text_from_page, pdf.pages))
+        with fitz.open(pdf_path) as pdf:
+            page_texts = [page.get_text("text") for page in pdf]
             return "\n".join(page_texts)
     except Exception as e:
         print(f"Error while extracting text from {pdf_path}: {e}")
         return ""
+
+
 
 def send_message_to_gpt(prompt):
     response = openai.Completion.create(
@@ -68,41 +72,64 @@ def analyze_pdf(pdf_text, user_input, summarise=False, summary_length=0):
 
     return "\n".join(responses)
 
-def main():
-    root = tk.Tk()
-    root.withdraw()
-    folder_path = filedialog.askdirectory()
+# Tkinter GUI code starts here
+root = tk.Tk()
+root.title("PDF Analyzer")
+root.geometry("800x600")
 
-    if not folder_path:
-        print("No folder selected. Exiting...")
-        return
+selected_pdf = None
+pdf_texts = {}
 
-    print("Starting the conversation. Type 'quit' to exit.")
-    print("Type 'summarise' to generate a summary, 'sentiment' for sentiment analysis, or ask a question.")
-    pdf_texts = {}
-    while True:
-        user_input = input("You: ")
-        if user_input.lower() == 'quit':
-            break
-
-        selected_pdf = filedialog.askopenfilename(initialdir=folder_path, title="Select a PDF", filetypes=(("PDF files", "*.pdf"), ("All files", "*.*")))
-
-        if not selected_pdf:
-            print("GPT: No PDF was selected.")
-            continue
-
+def select_pdf():
+    global selected_pdf
+    selected_pdf = filedialog.askopenfilename(filetypes=[("PDF files", "*.pdf")])
+    if selected_pdf:
+        pdf_name.set(os.path.basename(selected_pdf))
         if selected_pdf not in pdf_texts:
             pdf_texts[selected_pdf] = extract_text_from_pdf(selected_pdf)
-        
-        pdf_text = pdf_texts[selected_pdf]
-        summarise = user_input.lower() == 'summarise'
+    else:
+        pdf_name.set("No PDF selected")
+
+def analyze_selected_pdf():
+    global selected_pdf, pdf_texts
+
+    user_input = user_input_var.get()
+    if not selected_pdf:
+        analysis_text.delete("1.0", tk.END)
+        analysis_text.insert(tk.END, "No PDF was selected.")
+        return
+
+    pdf_text = pdf_texts[selected_pdf]
+    summarise = user_input.lower() == 'summarise'
+    summary_length = 50  # You can change this
+    if summarise:
         summary_length = 50  # You can change this
-        if summarise:
-            summary_length = 50  # You can change this
 
-        analysis = analyze_pdf(pdf_text, user_input, summarise, summary_length)
-        print(f"\nAnalysis for {os.path.basename(selected_pdf)}:")
-        print(f"GPT: {analysis}")
+    analysis = analyze_pdf(pdf_text, user_input, summarise, summary_length)
+    analysis_text.delete("1.0", tk.END)
+    analysis_text.insert(tk.END, f"\nAnalysis for {os.path.basename(selected_pdf)}:")
+    analysis_text.insert(tk.END, f"\nGPT: {analysis}")
 
-if __name__ == "__main__":
-    main()
+pdf_name = tk.StringVar()
+pdf_name.set("No PDF selected")
+
+select_button = ttk.Button(root, text="Select PDF", command=select_pdf)
+select_button.pack(pady=10)
+
+pdf_label = ttk.Label(root, textvariable=pdf_name)
+pdf_label.pack(pady=5)
+
+user_input_label = ttk.Label(root, text="Type 'summarise' to generate a summary, 'sentiment' for sentiment analysis, or ask a question:")
+user_input_label.pack(pady=5)
+
+user_input_var = tk.StringVar()
+user_input_entry = ttk.Entry(root, textvariable=user_input_var, width=60)
+user_input_entry.pack(pady=5)
+
+analyze_button = ttk.Button(root, text="Analyze PDF", command=analyze_selected_pdf)
+analyze_button.pack(pady=10)
+
+analysis_text = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=80, height=20)
+analysis_text.pack(pady=10)
+
+root.mainloop()
