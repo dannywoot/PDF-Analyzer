@@ -7,11 +7,12 @@ PDF Analyzer is a Python program that utilizes the GPT API to analyze and proces
 - Summarize PDF content: Generate a summary of the selected PDF file.
 - Sentiment analysis: Analyze the sentiment of the content in the PDF file.
 - Ask a question: Ask a question related to the content of the PDF file, and get an answer based on the GPT analysis.
+- Simple visual interface
 
 ## Requirements
 
 - Python 3.x
-- pdfplumber
+- PyMuPDF
 - openai
 - tkinter
 
@@ -21,7 +22,7 @@ PDF Analyzer is a Python program that utilizes the GPT API to analyze and proces
 2. Install the required packages:
 
 ```
-pip install pdfplumber openai tkinter
+pip install PyMuPDF openai tkinter
 ```
 Set your OpenAI API key in the pdf.py script:
 ```
