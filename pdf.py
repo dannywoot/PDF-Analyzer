@@ -12,12 +12,14 @@ def extract_text_from_page(page):
     return page.extract_text()
 
 def extract_text_from_pdf(pdf_path):
-    with pdfplumber.open(pdf_path) as pdf:
-        text = ''
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            page_texts = list(executor.map(extract_text_from_page, pdf.pages))
-        text = ' '.join(page_texts)
-    return text
+    try:
+        with pdfplumber.open(pdf_path) as pdf:
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                page_texts = list(executor.map(extract_text_from_page, pdf.pages))
+            return "\n".join(page_texts)
+    except Exception as e:
+        print(f"Error while extracting text from {pdf_path}: {e}")
+        return ""
 
 def send_message_to_gpt(prompt):
     response = openai.Completion.create(
