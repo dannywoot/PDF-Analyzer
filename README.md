@@ -22,7 +22,7 @@ This project is a PDF analyzer tool powered by GPT-3 that allows you to ask ques
 2. Install the required packages:
 
 ```
-pip install PyMuPDF openai tkinter
+pip install PyMuPDF openai tkinter fitz
 ```
 Set your OpenAI API key in the pdf.py script:
 ```
