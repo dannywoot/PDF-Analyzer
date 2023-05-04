@@ -12,7 +12,6 @@ openai.api_key = "your-api-key-here"
 def extract_text_from_page(page):
     return page.extract_text()
 
-import fitz
 
 def extract_text_from_pdf(pdf_path):
     try:
